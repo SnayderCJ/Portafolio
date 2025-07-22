@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Profesional</title>
+    <!-- Carga la fuente Inter de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Enlace a tu archivo CSS compilado de Tailwind -->
+    <link href="./src/output.css" rel="stylesheet">
+    <!-- Las animaciones personalizadas se han eliminado de aquí para usar solo Tailwind -->
+</head>
+<!-- Aplicamos un degradado de fondo y la fuente Inter a todo el cuerpo -->
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen font-inter antialiased text-gray-800">
+
+    <!-- Encabezado con degradado, sombra y posición sticky -->
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-4 shadow-xl sticky top-0 z-50">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-2 md:mb-0">Mi Portafolio</h1>
+            <nav>
+                <ul class="flex space-x-4 md:space-x-6">
+                    <li>
+                        <a href="#hero" class="block px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out text-lg">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="#projects" class="block px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out text-lg">Proyectos</a>
+                    </li>
+                    <li>
+                        <a href="#skills" class="block px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out text-lg">Habilidades</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero (Bienvenida) -->
+    <section id="hero" class="py-20 text-center bg-white bg-opacity-80 rounded-xl shadow-2xl mx-auto max-w-4xl my-12 p-8 backdrop-blur-sm border border-gray-200">
+        <h2 class="text-5xl font-extrabold text-blue-900 mb-4">
+            ¡Hola! Soy Snayder
+        </h2>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+            Bienvenido a mi espacio digital. Aquí podrás explorar mis proyectos más recientes y las habilidades que he cultivado en mi trayectoria profesional.
+        </p>
+        <a href="#projects" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out mt-8">
+            Ver Proyectos
+        </a>
+    </section>
+
+    <!-- Contenedor principal de contenido -->
+    <main class="container mx-auto my-8 p-8 bg-white rounded-2xl shadow-2xl border border-gray-200">
+
+        <!-- Sección de Proyectos -->
+        <section id="projects" class="mt-10">
+            <h3 class="text-4xl font-extrabold text-blue-800 mb-8 text-center border-b-4 border-blue-500 pb-2 inline-block mx-auto">
+                Proyectos Recientes
+            </h3>
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- El contenido de los proyectos será inyectado por JavaScript -->
+                <p class="text-gray-500 col-span-full text-center p-4">Cargando proyectos...</p>
+            </div>
+        </section>
+
+        <!-- Sección de Habilidades -->
+        <section id="skills" class="mt-16">
+            <h3 class="text-4xl font-extrabold text-blue-800 mb-8 text-center border-b-4 border-blue-500 pb-2 inline-block mx-auto">
+                Mis Habilidades
+            </h3>
+            <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- El contenido de las habilidades será inyectado por JavaScript -->
+                <p class="text-gray-500 col-span-full text-center p-4">Cargando habilidades...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-900 text-gray-300 p-6 text-center mt-12 shadow-inner">
+        <p>&copy; 2025 Snayder. Todos los derechos reservados.</p>
+        <p class="text-sm mt-2">Diseñado con <span class="text-red-500">&hearts;</span> y Tailwind CSS</p>
+    </footer>
+
+    <!-- Script JavaScript para cargar los datos -->
+    <script src="./src/app.js"></script>
+</body>
+</html>
