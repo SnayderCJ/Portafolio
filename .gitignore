@@ -1,5 +1,7 @@
 .venv/
 venv/
+
+# Backend
 __pycache__/
 *.pyc
 *.pyo
@@ -8,3 +10,6 @@ __pycache__/
 *.egg-info/
 *.eggs/
 *.log
+
+# Frontend
+node_modules/
