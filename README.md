@@ -268,7 +268,7 @@ npm run dev  # Ejecutar compilación
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](https://github.com/SnayderCJ) para más detalles.
 
 ---
 
