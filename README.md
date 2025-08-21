@@ -158,7 +158,7 @@ osascript -e 'tell app "Terminal" to do script "cd '$(pwd)'/frontend && npm run 
 sleep 2
 
 echo "🌐 Iniciando Frontend..."
-osascript -e 'tell app "Terminal" to do script "cd '$(pwd)'/frontend && python -m http.server 8080"'
+osascript -e 'tell app "Terminal" to do script "cd '$(pwd)'/frontend && npx serve -l 8080"'
 
 echo "✅ ¡Proyecto iniciado!"
 echo "📡 Backend: http://127.0.0.1:8000/"
