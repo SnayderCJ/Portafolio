@@ -38,8 +38,8 @@ Portafolio/
 
    *Clonar el repositorio:*
    ```bash
-   git clone https://github.com/SnayderCJ/Sistema_Medico.git
-   cd Sistema_Medico
+   git clone https://github.com/SnayderCJ/Portafolio.git
+   cd Portafolio
    ```
 
 ### 🔧 Configuración Inicial (Solo la primera vez)
