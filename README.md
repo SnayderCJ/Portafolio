@@ -32,7 +32,15 @@ Portafolio/
 - Python 3.8+
 - Node.js 16+
 - npm o yarn
-- Tailwind 4.1
+- Tailwind 
+
+## ⚙️ Cómo Ejecutar la Aplicación  
+
+   *Clonar el repositorio:*
+   ```bash
+   git clone https://github.com/SnayderCJ/Sistema_Medico.git
+   cd Sistema_Medico
+   ```
 
 ### 🔧 Configuración Inicial (Solo la primera vez)
 
@@ -103,12 +111,8 @@ cd frontend
 
 # Opción A: Live Server de VSCode (recomendado)
 # Clic derecho en index.html → "Open with Live Server"
-
-# Opción B: Servidor HTTP Python
-python -m http.server 8080
-
-# Opción C: Servidor HTTP Node.js
-npx http-server -p 8080
+# o
+→ npx serve -l 8080
 ```
 ✅ **Frontend:** `http://127.0.0.1:8080/`
 
@@ -130,7 +134,7 @@ start cmd /k "cd frontend && npm run dev"
 timeout /t 2 /nobreak > nul
 
 echo 🌐 Iniciando Frontend...
-start cmd /k "cd frontend && python -m http.server 8080"
+start cmd /k "cd frontend && npx serve -l 8080"
 
 echo ✅ ¡Proyecto iniciado! Revisa las ventanas de terminal.
 echo 📡 Backend: http://127.0.0.1:8000/
