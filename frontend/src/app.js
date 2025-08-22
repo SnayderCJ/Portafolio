@@ -62,11 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         skills.forEach(skill => {
             const skillCard = `
-                <div class="glass-effect p-6 rounded-xl border border-white/10 text-center card-hover">
-                    <h4 class="text-xl font-semibold text-white mb-2">${skill.name}</h4>
-                    <p class="text-blue-300">${skill.level}</p>
+            <div class="glass-effect p-6 rounded-xl border border-white/10 card-hover">
+                <div class="flex justify-between items-center mb-2">
+                    <h4 class="text-xl font-semibold text-white">${skill.name}</h4>
+                    <p class="text-blue-300 font-semibold">${skill.level}%</p>
                 </div>
-            `;
+                <div class="w-full bg-slate-700 rounded-full h-2.5">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2.5 rounded-full" style="width: ${skill.level}%"></div>
+                </div>
+            </div>
+`;
             skillsContainer.innerHTML += skillCard;
         });
     }
@@ -98,4 +103,44 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('bg-slate-900/50');
         }
     });
+});
+
+// --- CÓDIGO PARA EL FORMULARIO DE CONTACTO ---
+const contactForm = document.getElementById('contact-form');
+
+contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Evita que la página se recargue
+
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+    submitButton.innerHTML = 'Enviando...';
+    submitButton.disabled = true;
+
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/contact/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            contactForm.reset(); // Limpia el formulario
+            submitButton.innerHTML = '¡Mensaje Enviado! ✔';
+        } else {
+            throw new Error('Hubo un problema con la solicitud.');
+        }
+    } catch (error) {
+        console.error('Error en el formulario de contacto:', error);
+        submitButton.innerHTML = 'Error al Enviar';
+    } finally {
+        setTimeout(() => {
+            submitButton.innerHTML = originalButtonText;
+            submitButton.disabled = false;
+        }, 5000); // Restaura el botón después de 5 segundos
+    }
 });
