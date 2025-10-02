@@ -1,12 +1,14 @@
-// frontend/src/app.js (versión corregida y mejorada)
-
 document.addEventListener('DOMContentLoaded', () => {
     const projectsContainer = document.getElementById('projects-container');
     const skillsContainer = document.getElementById('skills-container');
+    
+    // URL del backend en producción
+    const API_BASE_URL = 'https://snayder-portafolio-backend.onrender.com';
 
     async function fetchProjects() {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/projects/');
+            // --- CAMBIO AQUÍ ---
+            const response = await fetch(`${API_BASE_URL}/api/projects/`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -42,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchSkills() {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/skills/');
+            // --- CAMBIO AQUÍ ---
+            const response = await fetch(`${API_BASE_URL}/api/skills/`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -103,44 +106,45 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('bg-slate-900/50');
         }
     });
-});
 
-// --- CÓDIGO PARA EL FORMULARIO DE CONTACTO ---
-const contactForm = document.getElementById('contact-form');
+    // --- CÓDIGO PARA EL FORMULARIO DE CONTACTO ---
+    const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Evita que la página se recargue
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Evita que la página se recargue
 
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
-    submitButton.innerHTML = 'Enviando...';
-    submitButton.disabled = true;
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.innerHTML = 'Enviando...';
+        submitButton.disabled = true;
 
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData.entries());
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData.entries());
 
-    try {
-        const response = await fetch('http://127.0.0.1:8000/api/contact/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
+        try {
+            // --- CAMBIO AQUÍ ---
+            const response = await fetch(`${API_BASE_URL}/api/contact/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
 
-        if (response.ok) {
-            contactForm.reset(); // Limpia el formulario
-            submitButton.innerHTML = '¡Mensaje Enviado! ✔';
-        } else {
-            throw new Error('Hubo un problema con la solicitud.');
+            if (response.ok) {
+                contactForm.reset(); // Limpia el formulario
+                submitButton.innerHTML = '¡Mensaje Enviado! ✔';
+            } else {
+                throw new Error('Hubo un problema con la solicitud.');
+            }
+        } catch (error) {
+            console.error('Error en el formulario de contacto:', error);
+            submitButton.innerHTML = 'Error al Enviar';
+        } finally {
+            setTimeout(() => {
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+            }, 5000); // Restaura el botón después de 5 segundos
         }
-    } catch (error) {
-        console.error('Error en el formulario de contacto:', error);
-        submitButton.innerHTML = 'Error al Enviar';
-    } finally {
-        setTimeout(() => {
-            submitButton.innerHTML = originalButtonText;
-            submitButton.disabled = false;
-        }, 5000); // Restaura el botón después de 5 segundos
-    }
+    });
 });
