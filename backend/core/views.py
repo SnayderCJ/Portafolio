@@ -6,8 +6,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 from .models import Project, Skill
 from .serializers import ProjectSerializer, SkillSerializer
-from django.contrib.auth.models import User
-from django.http import HttpResponse
 
 class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all()
@@ -40,10 +38,3 @@ class ContactFormView(APIView):
         except Exception as e:
             return Response({'error': f'Hubo un error al enviar el mensaje.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
-def create_superuser_view(request):
-    try:
-        # ¡IMPORTANTE! Cambia el username, email y password por los que tú quieras
-        User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
-        return HttpResponse("<h1>¡Superusuario creado con éxito!</h1><p>Ya puedes borrar este código de tus vistas.</p>")
-    except Exception as e:
-        return HttpResponse(f"<h1>Error al crear el superusuario</h1><p>{e}</p><p>Es posible que el usuario ya exista.</p>")

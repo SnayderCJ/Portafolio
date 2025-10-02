@@ -10,5 +10,4 @@ router.register(r'skills', SkillViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('contact/', ContactFormView.as_view(), name='contact'),
-    path('crear-admin-secreto/', create_superuser_view, name='create-superuser'),
 ]
